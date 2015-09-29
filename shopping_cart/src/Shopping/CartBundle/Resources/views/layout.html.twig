@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+       <title>{% block title %}
+            {% endblock %}</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        {% block css %}
+            {% stylesheets
+                '@ShoppingCartBundle/Resources/public/css/bootstrap.min.css'
+                '@ShoppingCartBundle/Resources/public/css/font-awesome.min.css'
+                '@ShoppingCartBundle/Resources/public/css/ionicons.min.css'
+                '@ShoppingCartBundle/Resources/public/css/AdminLTE.css'
+                '@ShoppingCartBundle/Resources/public/css/morris/morris.css'
+                '@ShoppingCartBundle/Resources/public/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock css %}
+        
+        
+    </head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header">
+            <a href="../../index.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                Shopping Cart
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">                       
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+{#                                <span><i class="caret"></i></span>#}
+                            </a>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">                
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            {% image '@ShoppingCartBundle/Resources/public/images/avatar3.png' %}
+                                <img src="{{ asset_url }}" class="img-circle" alt="User Image" />
+                            {% endimage %}
+                        </div>
+                        <div class="pull-left info">
+                            <p>Hello</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                        <div class="cart">
+                            <a href=" {{ path('shopping_cart_displaycart') }}">
+                            {% image '@ShoppingCartBundle/Resources/public/images/shopping.png' %}
+                                <img src="{{ asset_url }}"  alt="shopping image" />
+                            {% endimage %}
+                            
+                            <span>CART</span></a>
+                        </div>
+                    <ul class="sidebar-menu">
+                       
+                        <li>
+                            <a href="{{ path('shopping_cart_allproducts')}}">
+                                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="{{ path('shopping_cart_allproducts')}}">
+                                <i class="fa fa-th"></i> <span>Products</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('shopping_cart_addproduct') }}"><i class="fa fa-angle-double-right"></i> Add Product</a></li>
+                                <li><a href="{{ path('shopping_cart_allproducts') }}"><i class="fa fa-angle-double-right"></i> All Products</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="treeview">
+                            <a href="{{ path('shopping_cart_addcategory')}}">
+                                <i class="fa fa-th"></i> <span>Categories</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('shopping_cart_addcategory') }}"><i class="fa fa-angle-double-right"></i> Add Category</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">                
+                <!-- Content Header (Page header) -->
+                
+                <!-- Main content -->
+                <section class="content">
+                    {% block content %}
+                    {% endblock content %}
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+            {% block javascripts %}
+                {% javascripts
+                    '@ShoppingCartBundle/Resources/public/js/jquery.min.js'
+                    '@ShoppingCartBundle/Resources/public/js/bootstrap.min.js'
+                    '@ShoppingCartBundle/Resources/public/js/AdminLTE/app.js'
+                     %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+            <script type="text/javascript">
+            $(function() {
+                $('body').delegate('.prdouctqty', 'click', update);
+                $('.producttype').on('change',show);
+                function show(){
+{#                    alert('hi');#}
+                    value = $(this).val();
+                   {# var option = $('option:selected', this).attr('option');
+                    alert(option);#}
+                    if(value == 1371)
+                    {
+{#                        alert('1');#}
+                       $('.percentage').append('Sale Percentage: <input name="percentage" type="number" min="0" > %');
+                    }
+{#                    alert(value);#}
+                }
+                function update(){
+                    productId = $(this).attr('id');
+                    Quantity = $(this).val();
+                    path = "{{ path('shopping_cart_updatecart') }}";
+
+{#                    alert(Quantity);#}
+                   
+                    $.ajax({
+                        type: "POST",
+                        url: path,
+                        data:  { "qty" : Quantity, "pid" : productId },
+                        success: function (data) {
+{#                            alert(data);#}
+                            $('#cartTable').remove();
+                            var orderData = $.parseJSON(data);
+                            var total = 0;
+                            $(".new-div").append('<table  id="cartTable"  class="table table-bordered" cellpadding="10" cellspacing="1"><tr><th><strong>Product Name</strong></th>'+
+                                    '<th><strong>Product Price</strong></th>'+
+                                    '<th><strong>Product Amount</strong></th>'+
+                                    '<th><strong>Action</strong></th></tr></table>');
+                            for (i = 0; i < orderData.length; i++) {
+                                
+                                path2 = "{{ path('shopping_cart_deleteitem',{'pid' : 'productId'}) }}";
+                                path2 = path2.replace("productId", orderData[i]['id']);
+                                
+                                $("#cartTable").append('<tr><td><strong>'+orderData[i]['productName']+'</strong></td><td><strong>'+orderData[i]['productPrice']*orderData[i]['amount']+'</strong></td><td><strong><input type="number" class="prdouctqty" min="0" max="'+orderData[i]['productQuantity']+'" id="'+orderData[i]['productId']+'" value="'+orderData[i]['amount']+'"></strong></td><td><a href="'+path2+'" class="btnRemoveAction">Remove Item</a></td></tr>'
+                                                      );
+                                total = total + orderData[i]['productPrice']*orderData[i]['amount'];
+                            }
+                            $('#cartTable').append('<td></td><td colspan="5" ><strong>Total:</strong>'+total+'$</td>');
+                            
+                        },
+                        error: function () {
+                            alert('errorrrr user orsers')
+                        }
+                    });
+                }
+            });
+          
+        </script>      
+      
+       
+    </body>
+</html>
+

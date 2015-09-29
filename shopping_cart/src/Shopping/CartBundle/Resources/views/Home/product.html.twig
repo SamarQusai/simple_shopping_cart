@@ -1,0 +1,52 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+    <p id ="paragraph_product_details">PRODUCT Details</p> 
+    <hr id="hr_product_details" style="margin-top:10px; margin-left:43%;">
+<div class="tableDetails">
+
+
+
+						
+           
+                
+		<div class="imageP"><img src= "hjghgh.jpg" width="300" height="300"></div>
+                
+                <div id="producttable">
+               
+
+                  <div class='nameP'><p>{{ product.productName }}</p>
+                  <hr>
+                  </div>
+           
+              						
+                  <div class='priceP'><p>{{ product.productPrice }}$</p></div>
+               
+                
+             
+                 <div class='descP'>{{ product.productDescription}}</div>
+                {#{{ form_start(form) }}
+                 <div class="addToCart">
+                     {{ form_label(form.amount) }}
+                     {{ form_widget(form.amount) }}
+                 </div>
+                    {{ form_widget(form.submit) }}
+                     {{ form_end(form) }}#}
+                <form action ="{{ path('shopping_cart_addtocart') }}" method="POST">
+{#                        <?php echo $id ?>#}
+                    <input type ="hidden" name="productId" value="{{ product.id }}"/>
+{#                          <?php  echo $row[0]['product_quantity'];?>"#}
+                    <div class="addToCart"><input type="number" min="1" max="{{product.productQuantity}}" name="amount" value="1" size="2" />
+                    <input type="submit" name="submit" value="Add to cart" />
+                </form>
+                   
+      
+</div>
+{% endblock content %}
+    
+{% endblock %}
+{% block title %}
+    Product
+{% endblock %}

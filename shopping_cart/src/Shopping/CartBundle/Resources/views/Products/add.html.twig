@@ -1,0 +1,61 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+   
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+		<div class="project-wrapper">            
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.productName) }}
+                        {{ form_widget(form.productName) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.productPrice) }}
+                        {{ form_widget(form.productPrice) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.productQuantity) }}
+                        {{ form_widget(form.productQuantity) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.productDescription) }}
+                        {{ form_widget(form.productDescription) }}
+                    </div>
+                    {#<div class="form-group">
+                        {{ form_label(form.productType) }}
+                        {{ form_widget(form.productType) }}
+                    </div>#}
+                    <div>
+                        <label>Select category:</label>
+                        <select name="categoryId" class="producttype">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{category.categoryName}}</option>
+                            {% endfor %}
+                        </select>
+                        <a href="{{ path('shopping_cart_addcategory') }}">Add new Category</a>
+                    </div>
+                    <div class="percentage">
+                        
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.productImage) }}
+                        {{ form_widget(form.productImage) }}
+                    </div>
+                    {{ form_widget(form.save) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            
+            
+            
+            
+        {% endblock content %}
+    
+{% endblock %}
+
+
+{% block title %}
+    Add Product
+{% endblock %}

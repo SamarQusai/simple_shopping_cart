@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="bg-black">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}
+            {% endblock %}</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        {% block css %}
+            {% stylesheets
+                '@ShoppingCartBundle/Resources/public/css/bootstrap.min.css'
+                '@ShoppingCartBundle/Resources/public/css/font-awesome.min.css'
+                '@ShoppingCartBundle/Resources/public/css/ionicons.min.css'
+                '@ShoppingCartBundle/Resources/public/css/AdminLTE.css'
+                '@ShoppingCartBundle/Resources/public/css/morris/morris.css'
+                '@ShoppingCartBundle/Resources/public/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock css %}
+    </head>
+    <body class="bg-black">
+
+        <div class="form-box" id="login-box">
+            <div class="header">Sign In</div>
+            <form action="{{ path('user_login') }}" method="POST" data-validate="parsley">
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="User Name" data-trigger="change" dara-required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" data-trigger="change" dara-required="true"/>
+                    </div>          
+                </div>
+                <div class="footer">                                                               
+                    <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
+                    
+                    
+                    <a href="{{ path('shopping_cart_signup') }}" class="text-center">Register a new membership</a>
+                
+                    {% if error is defined %}
+                        <div class="alert alert-danger alert-dismissable">
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                
+            </form>
+        </div>
+                
+
+        {% block javascripts %}
+            {% javascripts
+                '@ShoppingCartBundle/Resources/public/js/jquery.min.js'
+                '@ShoppingCartBundle/Resources/public/js/bootstrap.min.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %} 
+
+    </body>
+</html>

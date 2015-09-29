@@ -1,0 +1,73 @@
+{#{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+        {% block content %}
+            <h2>Regiseration form</h2>
+        {% endblock content %}
+{% endblock %}
+
+{% block title %}
+    All Articles
+{% endblock %}
+#}
+<!DOCTYPE html>
+<html class="bg-black">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}
+            {% endblock %}</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.0.2 -->
+        {% block css %}
+            {% stylesheets
+                '@ShoppingCartBundle/Resources/public/css/bootstrap.min.css'
+                '@ShoppingCartBundle/Resources/public/css/font-awesome.min.css'
+                '@ShoppingCartBundle/Resources/public/css/ionicons.min.css'
+                '@ShoppingCartBundle/Resources/public/css/AdminLTE.css'
+                '@ShoppingCartBundle/Resources/public/css/morris/morris.css'
+                '@ShoppingCartBundle/Resources/public/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}">
+            {% endstylesheets %}
+        {% endblock css %}
+    </head>
+    <body class="bg-black">
+
+        <div class="form-box" id="login-box">
+            <div class="header">Register New Membership</div>
+            <form action="{{ path('shopping_cart_signup') }}" method="POST" data-validate="parsley">
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Full name" data-trigger="change" dara-required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" data-trigger="change" dara-required="true"/>
+                    </div>
+                   {# <div class="form-group">
+                        <input type="password" id="password2" name="password2" class="form-control" placeholder="Retype password" data-trigger="change" dara-required="true" data-equalto="#password" />
+                    </div>#}
+                    <div class="form-group">
+                        <input type="number" name="creditlimit" class="form-control" placeholder="Credit cart limit" data-trigger="change" dara-required="true" data-type="number"/>
+                    </div>
+                </div>
+                <div class="footer">                    
+
+                    <button type="submit" class="btn bg-olive btn-block">Sign me up</button>
+
+                    <a href="{{ path('user_login')}}" class="text-center">I already have a membership</a>
+                </div>
+            </form>           
+        </div>
+
+            {% block javascripts %}
+                {% javascripts
+                    '@ShoppingCartBundle/Resources/public/js/jquery.min.js'
+                    '@ShoppingCartBundle/Resources/public/js/bootstrap.min.js'
+                    '@ShoppingCartBundle/Resources/public/js/parsley/parsley.remote.min.js'
+                    '@ShoppingCartBundle/Resources/public/js/parsley/parsley.min.js'
+                %}
+                    <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock %}
+    </body>
+</html>

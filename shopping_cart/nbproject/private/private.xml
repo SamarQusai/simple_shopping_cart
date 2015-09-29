@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Users/registeration.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Form/Type/CategoryType.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/layout.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Controller/CategoryController.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Controller/UserController.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/Products.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/Orders.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Home/home.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Cart/confirmationMessage.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Products/addCategory.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/public/css/AdminLTE.css</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/Users.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/ProductCategories.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Controller/CartController.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/config/routing.yml</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Controller/DefaultController.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Home/product.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Controller/ProductsController.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Form/Type/ProductType.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Products/add.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Users/login.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/UsersRepository.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Form/Type/CartType.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Cart/cart.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Resources/views/Cart/orderSummary.html.twig</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/ProductsRepository.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/ProductCategoriesRepository.php</file>
+            <file>file:/var/www/html/shopping_cart/src/Shopping/CartBundle/Entity/OrdersRepository.php</file>
+        </group>
+    </open-files>
+</project-private>

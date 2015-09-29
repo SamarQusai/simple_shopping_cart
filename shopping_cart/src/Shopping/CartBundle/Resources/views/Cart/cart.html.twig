@@ -1,0 +1,63 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+    <p id ="paragraph">YOUR SHOPPING CART</p>
+    <hr id="hrcart">
+{#    {{message}}#}
+<div id="shopping-cart">
+    <div class="txt-heading">Shopping Cart <a id="btnEmpty" href="{{path('shopping_cart_deleteallitems')}}">Empty Cart</a></div>
+{#<a id="btnEmpty" href="{{path('shopping_cart_confirmorder',{'total',})}}">Order Now</a></div>#}
+<viv class="new-div"></viv>
+<table id="cartTable"  class="table table-bordered" cellpadding="10" cellspacing="1" >
+<tr>
+<th><strong>Product Name</strong></th>
+<th><strong>Product Price</strong></th>
+<th><strong>Amount</strong></th>
+<th><strong>Action</strong></th>
+</tr>	
+<div class="del">
+{% set total = 0 %}
+
+            {% for data in cartdata  %}
+              <tr>
+                    <td><strong>{{data.productName}}</strong></td>
+                    <td><strong>{{data.productPrice*data.amount}}$</strong></td>
+                    <td><strong><input type ="number" class="prdouctqty" id="{{data.id}}" min="0" max="{{data.productQuantity}}" value="{{data.amount}}"></strong></td>
+                    <input type ="hidden" id="productid" value="{{data.id}}">
+
+{#                    <?php echo $row[$i]['product_price'] * $row[$i]['quantity']."$"; ?>#}
+                   <!-- <td><a href="?page=cart&action=updateitem&id= echo $row[$i]['id'];  -->
+                       <!-- class="btnUpdateAction">Update Item</a>-->
+
+                  <td><a href="{{ path('shopping_cart_deleteitem',{'pid' : data.id})}}" class="btnRemoveAction">Remove Item</a></td>
+                </tr>
+                {% set total = total + data.productPrice*data.amount %}
+              {% endfor %}  
+	{#<?php $id = $row[$i]['id'];
+        $total+=$row[$i]['product_price'] * $row[$i]['quantity'] ;} ?>#}
+                
+                <tr>
+                    <td></td>
+<td colspan="5" ><strong>Total:</strong> {{ total }}$</td>
+</div>
+<form action ="{{ path('shopping_cart_ordersummary')}}" method="post">
+      <input type="hidden" name="total" value="{{total}}"/>
+      <div class="orderNow">  <input type="submit" name="submit" value="Order Now" /></div>
+   </form>
+                
+                
+</tr>
+</table>
+</div>
+    
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br>
+    {% endblock content %}
+    
+{% endblock %}
+{% block title %}
+    Home
+{% endblock %}

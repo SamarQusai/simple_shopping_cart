@@ -1,0 +1,30 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+   
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 desc">
+		<div class="project-wrapper">            
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.categoryName) }}
+                        {{ form_widget(form.categoryName) }}
+                    </div>
+                   
+                    {{ form_widget(form.save) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            
+            
+            
+            
+        {% endblock content %}
+    
+{% endblock %}
+
+
+{% block title %}
+    Add Product
+{% endblock %}

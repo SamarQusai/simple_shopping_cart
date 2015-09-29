@@ -1,0 +1,40 @@
+<?php
+
+namespace Shopping\CartBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Orders
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Shopping\CartBundle\Entity\OrdersRepository")
+ */
+class Orders
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer")
+     */
+    private $amount;
+    
+    /** 
+     * @ORM\Id()
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="orderProducts") 
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false) 
+     */
+    private $userId;
+
+    /** 
+     * @ORM\Id()
+     * @ORM\ManyToOne(targetEntity="Products", inversedBy="orderProducts") 
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false) 
+     */
+    private $productId;
+
+    
+    
+ 
+}

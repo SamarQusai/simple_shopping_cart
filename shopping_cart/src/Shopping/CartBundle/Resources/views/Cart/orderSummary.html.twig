@@ -1,0 +1,61 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+
+    <p id ="paragraph">ORDER SUMMARY</p>
+    <hr id="hrone">
+<div class="order_summary">
+    
+<div class="">
+    <br>
+    <h3 class="sumary_head">Order Summary</h3> 
+
+    <hr>
+
+</div>
+           {% set total = 0 %}
+
+            {% for data in cartdata  %}                
+                <div>
+                    <ul class="product_list">
+                        <li>
+                            <img class="product_image" src= "" >
+                            <div class="product_info">
+                                <strong class="product_name">{{data.productName}}</strong>
+                                <strong class="product_price">{{data.productPrice*data.amount}}$</strong>
+                                <strong class="quantity">{{data.amount}}</strong>
+
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <hr border="1px solid #e7e7e7" width="90%" >
+                </div>
+                {% set total = total + (data.productPrice*data.amount) %}
+ {% endfor %}
+     
+                
+               
+<strong class="total">Total:</strong> 
+<span class="totalvalue">{{total}}$</span>
+<br><br><br>
+<strong class="total">Your Credit will be:</strong> 
+<span class="limit">{{newCredit}}$</span>
+<br><br><br>
+{#
+ {% endfor %}#}
+    <hr>
+    <form action ="{{path('shopping_cart_confirmorder')}}" method="post">
+      <input type="hidden" name="newCredit" value="{{newCredit}}"/>
+      <input type="submit" id="sumborder" name="submit" value="Confirm Your Order" />
+   </form>
+</div>
+
+  {% endblock content %}
+    
+{% endblock %}
+{% block title %}
+    Order Summary
+{% endblock %}

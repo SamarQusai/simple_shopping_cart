@@ -1,0 +1,24 @@
+{% extends "ShoppingCartBundle::layout.html.twig" %}
+
+{% block body %}
+
+        {% block content %}
+            
+<p id ="paragraph">CONFIRMATION</p>
+    <hr id="hrone">
+<div class="order_summary">
+    <div class="">
+        <br>
+        <h3 class="text-danger">Sorry! Your Cart is limited, You can't make an order!</h3> 
+
+        <hr>
+
+    </div>
+</div>
+
+    {% endblock content %}
+    
+{% endblock %}
+{% block title %}
+    Message
+{% endblock %}

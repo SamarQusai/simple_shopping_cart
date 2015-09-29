@@ -1,0 +1,65 @@
+shopping_cart_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ShoppingCartBundle:Default:index }
+
+user_login:
+    pattern: /login
+    defaults: { _controller: ShoppingCartBundle:User:index }
+    
+shopping_cart_signup:
+    pattern: /signup
+    defaults: { _controller: ShoppingCartBundle:User:signup}
+    
+shopping_cart_addproduct:
+    path: /addproduct
+    defaults: { _controller: ShoppingCartBundle:Products:add }
+    
+
+    
+shopping_cart_allproducts:
+    path: /home
+    defaults: { _controller: ShoppingCartBundle:Products:index}
+    
+shopping_cart_product:
+    pattern: /productdetails/{id}
+    defaults: { _controller: ShoppingCartBundle:Products:productdetails }
+        
+shopping_cart:
+    path: /cart
+    defaults: { _controller: ShoppingCartBundle:Cart:index }
+     
+shopping_cart_addtocart: 
+    path: /addtocart
+    defaults: { _controller: ShoppingCartBundle:Cart:add }
+    
+shopping_cart_displaycart: 
+    path: /displaycart
+    defaults: { _controller: ShoppingCartBundle:Cart:displayCartData }
+    
+shopping_cart_deleteitem: 
+    path: /deleteitem/{pid}
+    defaults: { _controller: ShoppingCartBundle:Cart:deleteItem }
+
+shopping_cart_deleteallitems: 
+    path: /deleteitems
+    defaults: { _controller: ShoppingCartBundle:Cart:deleteAllItems }
+    
+shopping_cart_updatecart: 
+    path: /updatecart
+    defaults: { _controller: ShoppingCartBundle:Cart:updateItems }
+ 
+shopping_cart_ordersummary:
+    path: /ordersummary
+    defaults: { _controller: ShoppingCartBundle:Cart:showOrderSummary }
+    
+shopping_cart_confirmorder:
+    path: /confirmorder
+    defaults: { _controller: ShoppingCartBundle:Cart:confirmAnOrder }
+   
+shopping_cart_logout:
+    path: /logout
+    defaults: { _controller: ShoppingCartBundle:User:logout }
+    
+shopping_cart_addcategory:
+    path: /addcategory
+    defaults: { _controller: ShoppingCartBundle:Category:add }
